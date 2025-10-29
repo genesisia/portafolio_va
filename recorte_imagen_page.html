@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recorte de Imagen con Python</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F5F1ED;
+            color: #4A4038;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #3D3428;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #6B5D4F;
+            font-weight: 300;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: #FFFFFF;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #3D3428;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .code-block {
+            background: #2D2D2D;
+            color: #F8F8F2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .keyword {
+            color: #F92672;
+        }
+
+        .function {
+            color: #A6E22E;
+        }
+
+        .string {
+            color: #E6DB74;
+        }
+
+        .comment {
+            color: #75715E;
+        }
+
+        .number {
+            color: #AE81FF;
+        }
+
+        .explanation {
+            background: #E8DED2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+
+        .explanation h3 {
+            font-size: 1.1rem;
+            color: #3D3428;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .explanation ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .explanation li {
+            padding: 0.5rem 0;
+            color: #4A4038;
+            line-height: 1.6;
+        }
+
+        .explanation li::before {
+            content: "→ ";
+            color: #8B7A6A;
+            font-weight: bold;
+        }
+
+        .visual-demo {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .demo-image {
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #C9B8A3 0%, #A89580 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin: 0 auto 1rem;
+        }
+
+        .coordinates {
+            display: inline-block;
+            background: #FFFFFF;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            font-family: 'Courier New', monospace;
+            color: #3D3428;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #8B7A6A;
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .btn-back:hover {
+            background: #6B5D4F;
+        }
+
+        @media (max-width: 968px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .code-block {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Recorte de Imagen con OpenCV</h1>
+            <p class="subtitle">Proyecto de Visión Artificial</p>
+        </header>
+
+        <div class="content-grid">
+            <div class="card">
+                <h2>📝 Código Python</h2>
+                <div class="code-block">
+<span class="keyword">import</span> cv2
+<span class="comment">#importa libreria opencv</span>
+
+<span class="comment">#cargar imagen</span>
+gato=cv2.<span class="function">imread</span>(<span class="string">"gatito.webp"</span>)
+
+<span class="comment">#mostrar</span>
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    recorte=gato[<span class="number">100</span>:<span class="number">160</span>,<span class="number">100</span>:<span class="number">240</span>]
+    cv2.<span class="function">imshow</span>(<span class="string">'imagen original'</span>,gato)
+    tecla=cv2.<span class="function">waitKey</span>(<span class="number">0</span>)
+    <span class="keyword">if</span> tecla==<span class="function">ord</span>(<span class="string">"y"</span>):
+        cv2.<span class="function">imshow</span>(<span class="string">"imagen recortada"</span>,recorte)
+    <span class="keyword">elif</span> tecla==<span class="function">ord</span>(<span class="string">"x"</span>):
+        cv2.<span class="function">destroyAllWindows</span>()<span class="comment">#cierra todas las ventanas</span>
+        <span class="keyword">break</span>
+                </div>
+
+                <div class="explanation">
+                    <h3>📚 Explicación del Código</h3>
+                    <ul>
+                        <li><strong>cv2.imread()</strong>: Carga la imagen del archivo</li>
+                        <li><strong>gato[100:160, 100:240]</strong>: Recorta desde fila 100-160, columna 100-240</li>
+                        <li><strong>cv2.imshow()</strong>: Muestra la imagen en una ventana</li>
+                        <li><strong>cv2.waitKey(0)</strong>: Espera a que se presione una tecla</li>
+                        <li><strong>Tecla 'y'</strong>: Muestra la imagen recortada</li>
+                        <li><strong>Tecla 'x'</strong>: Cierra todas las ventanas y termina</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🎨 Visualización del Recorte</h2>
+                <div class="visual-demo">
+                    <div class="demo-image">🐱</div>
+                    <p style="color: #6B5D4F; margin-bottom: 1rem;">Imagen Original</p>
+                    
+                    <div class="coordinates">
+                        <strong>Coordenadas del recorte:</strong><br>
+                        Filas: [100:160]<br>
+                        Columnas: [100:240]
+                    </div>
+                </div>
+
+                <div class="explanation">
+                    <h3>⚙️ Controles Interactivos</h3>
+                    <ul>
+                        <li><strong>Presiona 'Y'</strong>: Ver imagen recortada</li>
+                        <li><strong>Presiona 'X'</strong>: Salir del programa</li>
+                        <li><strong>Cualquier otra tecla</strong>: Actualiza la ventana</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🔍 Conceptos Clave</h2>
+            <div class="explanation">
+                <ul>
+                    <li><strong>Slicing de NumPy</strong>: Las imágenes en OpenCV son arrays de NumPy, por lo que se pueden recortar usando índices [fila_inicio:fila_fin, columna_inicio:columna_fin]</li>
+                    <li><strong>Bucle infinito</strong>: El programa se mantiene activo hasta que el usuario presiona 'x' para salir</li>
+                    <li><strong>Evento de teclado</strong>: ord() convierte el carácter en su código ASCII para comparar con la tecla presionada</li>
+                    <li><strong>Gestión de ventanas</strong>: destroyAllWindows() cierra todas las ventanas de OpenCV abiertas</li>
+                </ul>
+            </div>
+        </div>
+
+        <center>
+            <a href="index.html" class="btn-back">← Volver al Portafolio</a>
+        </center>
+    </div>
+</body>
+</html>
